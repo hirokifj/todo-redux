@@ -14,7 +14,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
@@ -31,6 +31,19 @@ module.exports = {
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
     'react/prop-types': 'off',
     'spaced-comment': ['error', 'always', { markers: ['/ <reference'] }],
+    'no-use-before-define': 'off', // @typescript-eslintのバグがあるらしいので改善されるまでoff推奨
+    '@typescript-eslint/no-use-before-define': ['error'],
+    'import/extensions': [
+      // これがないとtsxのimportで怒られる。
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
     'prettier/prettier': [
       'error',
       {
