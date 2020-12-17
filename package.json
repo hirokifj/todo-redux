@@ -20,7 +20,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "yarn lint:js && yarn lint:style",
+    "lint:fix": "yarn lint:js:fix && yarn lint:style:fix",
+    "lint:js": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:js:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:style": "stylelint 'src/**/*.css'",
+    "lint:style:fix": "stylelint --fix 'src/**/*.css'"
   },
   "eslintConfig": {
     "extends": [
