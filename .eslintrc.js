@@ -8,6 +8,9 @@ module.exports = {
     'airbnb',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'prettier',
+    'prettier/@typescript-eslint',
+    'prettier/react',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -17,7 +20,7 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'jsx-a11y', 'react'],
   settings: {
     'import/resolver': {
       node: {
@@ -33,6 +36,7 @@ module.exports = {
     'spaced-comment': ['error', 'always', { markers: ['/ <reference'] }],
     'no-use-before-define': 'off', // @typescript-eslintのバグがあるらしいので改善されるまでoff推奨
     '@typescript-eslint/no-use-before-define': ['error'],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     'import/extensions': [
       // これがないとtsxのimportで怒られる。
       'error',
