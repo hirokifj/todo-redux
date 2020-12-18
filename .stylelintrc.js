@@ -4,5 +4,7 @@ module.exports = {
   ignoreFiles: ['**/node_modules/**'],
   rules: {
     'string-quotes': 'single',
+    'no-missing-end-of-source-newline': null,
+    'no-eol-whitespace': null,
   },
 }
