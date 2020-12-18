@@ -70,7 +70,11 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": ["eslint --fix --max-warnings=0"],
-    "src/**/*/.css": ["stylelint --fix"]
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix --max-warnings=0"
+    ],
+    "src/**/*/.css": [
+      "stylelint --fix"
+    ]
   }
 }
