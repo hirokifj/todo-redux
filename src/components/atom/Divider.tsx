@@ -3,11 +3,11 @@
 import React, { FC } from 'react'
 import { css, jsx, SerializedStyles } from '@emotion/react'
 
-const Divider: FC<{ styleProps?: SerializedStyles }> = ({ styleProps }) => {
+const Divider: FC<{ styleProp?: SerializedStyles }> = ({ styleProp }) => {
   const style = css`
     width: 100%;
     background-color: #f6f6f6;
-    ${styleProps}
+    ${styleProp}
   `
 
   return <hr css={style} />
