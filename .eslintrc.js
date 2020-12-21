@@ -37,6 +37,8 @@ module.exports = {
     'no-use-before-define': 'off', // @typescript-eslintのバグがあるらしいので改善されるまでoff推奨
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
     'import/extensions': [
       // これがないとtsxのimportで怒られる。
       'error',
