@@ -13,6 +13,7 @@ const CheckIcon: FC<{ isChecked: boolean; onClick: () => void }> = ({
     width: 24px;
     height: 24px;
     vertical-align: middle;
+    cursor: pointer;
     border: 1px solid #b9b8c3;
     border-radius: 50%;
     transition: all 0.2s ease;
