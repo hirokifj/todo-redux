@@ -3,7 +3,7 @@
 import React, { FC } from 'react'
 import { css, jsx, SerializedStyles } from '@emotion/react'
 
-const Board: FC<{ styleProp: SerializedStyles }> = ({
+const Board: FC<{ styleProp?: SerializedStyles }> = ({
   children,
   styleProp,
 }) => {
