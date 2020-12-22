@@ -2,6 +2,8 @@
 /** @jsx jsx */
 import React, { FC, useState, ChangeEvent } from 'react'
 import { css, jsx } from '@emotion/react'
+import { useDispatch } from 'react-redux'
+import { todoSlice } from '../../../ducks/todo'
 
 import Input from '../../atom/Input'
 import Button from '../../atom/Button'
@@ -32,14 +34,26 @@ const TaskInput: FC<{
   )
 }
 
-const TaskInputContainer: FC<{ onSubmit: () => void }> = ({ onSubmit }) => {
+const TaskInputContainer: FC = () => {
   const [value, setValue] = useState('')
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value)
   }
 
-  return TaskInput({ value, onChange: handleChange, onSubmit })
+  const clearInput = () => {
+    setValue('')
+  }
+
+  const dispatch = useDispatch()
+  const { taskAdded } = todoSlice.actions
+
+  const handleSubmit = () => {
+    dispatch(taskAdded({ title: value }))
+    clearInput()
+  }
+
+  return TaskInput({ value, onChange: handleChange, onSubmit: handleSubmit })
 }
 
 export default TaskInputContainer
