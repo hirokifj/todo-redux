@@ -25,7 +25,7 @@ const TaskInput: FC<{
   return (
     <div>
       <div css={inputStyle}>
-        <Input value={value} onChange={onChange} />
+        <Input value={value} onChange={onChange} placeholder="Task Title" />
       </div>
       <div css={buttonStyle}>
         <Button onClick={onSubmit}>Add Task</Button>
