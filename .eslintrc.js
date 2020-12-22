@@ -57,5 +57,6 @@ module.exports = {
         semi: false,
       },
     ],
+    'no-param-reassign': ['error', { props: false }], // immer利用時は props false
   },
 }
