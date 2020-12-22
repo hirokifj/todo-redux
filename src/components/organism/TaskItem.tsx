@@ -5,12 +5,7 @@ import { css, jsx } from '@emotion/react'
 import CheckIcon from '../molecule/CheckIcon'
 import TaskEditableText from '../molecule/TaskText'
 import Spacer from '../atom/Spacer'
-
-export interface Task {
-  id: string
-  title: string
-  isDone: boolean
-}
+import { Task } from '../../types/todo'
 
 const TaskItem: FC<{ task: Task; onCheckTask: () => void }> = ({
   task,
