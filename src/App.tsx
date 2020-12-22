@@ -1,12 +1,15 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
 import React from 'react'
+import { jsx } from '@emotion/react'
 import './styles/reset.css'
 import './styles/global.css'
-import './App.css'
+import IndexPage from './components/page/IndexPage'
 
 function App() {
   return (
     <div className="App">
-      <p>Hello React</p>
+      <IndexPage />
     </div>
   )
 }
