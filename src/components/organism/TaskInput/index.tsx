@@ -10,13 +10,19 @@ import Button from '../../atom/Button'
 
 const TaskInput: FC<{
   value: string
+  errMsg: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
   onKeyPress: (e: KeyboardEvent<HTMLInputElement>) => void
   onSubmit: () => void
-}> = ({ value, onChange, onKeyPress, onSubmit }) => {
+}> = ({ value, errMsg, onChange, onKeyPress, onSubmit }) => {
   const inputStyle = css`
     flex-grow: 1;
     margin-bottom: 20px;
+  `
+
+  const errMsgStyle = css`
+    display: inline-block;
+    color: #f96060;
   `
 
   const buttonStyle = css`
@@ -26,6 +32,7 @@ const TaskInput: FC<{
   return (
     <div>
       <div css={inputStyle}>
+        <span css={errMsgStyle}>{errMsg}</span>
         <Input
           value={value}
           onChange={onChange}
@@ -42,6 +49,7 @@ const TaskInput: FC<{
 
 const TaskInputContainer: FC = () => {
   const [value, setValue] = useState('')
+  const [errMsg, setErrMsg] = useState('')
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value)
@@ -55,6 +63,12 @@ const TaskInputContainer: FC = () => {
   const { taskAdded } = todoSlice.actions
 
   const submitTask = () => {
+    setErrMsg('')
+    if (value === '') {
+      setErrMsg('タスクを入力してください。')
+      return
+    }
+
     dispatch(taskAdded({ title: value }))
     clearInput()
   }
@@ -71,6 +85,7 @@ const TaskInputContainer: FC = () => {
 
   return TaskInput({
     value,
+    errMsg,
     onChange: handleChange,
     onKeyPress: handleKeyPress,
     onSubmit: handleSubmit,
