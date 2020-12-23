@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import React, { FC, useState, ChangeEvent } from 'react'
+import React, { FC, useState, ChangeEvent, KeyboardEvent } from 'react'
 import { css, jsx } from '@emotion/react'
 import { useDispatch } from 'react-redux'
 import { todoSlice } from '../../../ducks/todo'
@@ -11,8 +11,9 @@ import Button from '../../atom/Button'
 const TaskInput: FC<{
   value: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  onKeyPress: (e: KeyboardEvent<HTMLInputElement>) => void
   onSubmit: () => void
-}> = ({ value, onChange, onSubmit }) => {
+}> = ({ value, onChange, onKeyPress, onSubmit }) => {
   const inputStyle = css`
     flex-grow: 1;
     margin-bottom: 20px;
@@ -25,7 +26,12 @@ const TaskInput: FC<{
   return (
     <div>
       <div css={inputStyle}>
-        <Input value={value} onChange={onChange} placeholder="Task Title" />
+        <Input
+          value={value}
+          onChange={onChange}
+          onKeyPress={onKeyPress}
+          placeholder="Task Title"
+        />
       </div>
       <div css={buttonStyle}>
         <Button onClick={onSubmit}>Add Task</Button>
@@ -48,12 +54,27 @@ const TaskInputContainer: FC = () => {
   const dispatch = useDispatch()
   const { taskAdded } = todoSlice.actions
 
-  const handleSubmit = () => {
+  const submitTask = () => {
     dispatch(taskAdded({ title: value }))
     clearInput()
   }
 
-  return TaskInput({ value, onChange: handleChange, onSubmit: handleSubmit })
+  const handleSubmit = () => {
+    submitTask()
+  }
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      submitTask()
+    }
+  }
+
+  return TaskInput({
+    value,
+    onChange: handleChange,
+    onKeyPress: handleKeyPress,
+    onSubmit: handleSubmit,
+  })
 }
 
 export default TaskInputContainer

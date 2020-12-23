@@ -7,7 +7,8 @@ const Input: FC<{
   value?: string
   placeholder?: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-}> = ({ value = '', placeholder = '', onChange }) => {
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void
+}> = ({ value = '', placeholder = '', onChange, onKeyPress }) => {
   const style = css`
     width: 100%;
     padding: 14px 16px;
@@ -35,6 +36,7 @@ const Input: FC<{
       value={value}
       placeholder={placeholder}
       onChange={onChange}
+      onKeyPress={onKeyPress}
       css={style}
     />
   )
