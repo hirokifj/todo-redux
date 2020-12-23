@@ -3,8 +3,7 @@
 import React, { FC } from 'react'
 import { css, jsx } from '@emotion/react'
 import CheckIcon from '../molecule/CheckIcon'
-import TaskEditableText from '../molecule/TaskText'
-import Spacer from '../atom/Spacer'
+import TaskText from '../molecule/TaskText'
 import { Task } from '../../types/todo'
 
 const TaskItem: FC<{ task: Task; onCheckTask: () => void }> = ({
@@ -16,11 +15,20 @@ const TaskItem: FC<{ task: Task; onCheckTask: () => void }> = ({
     align-items: center;
   `
 
+  const checkIconStyle = css`
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+  `
+
   return (
     <div css={style}>
-      <CheckIcon isChecked={task.isDone} onClick={onCheckTask} />
-      <Spacer width="10px" />
-      <TaskEditableText text={task.title} isChecked={task.isDone} />
+      <div css={checkIconStyle}>
+        <CheckIcon isChecked={task.isDone} onClick={onCheckTask} />
+      </div>
+      <div>
+        <TaskText text={task.title} isChecked={task.isDone} />
+      </div>
     </div>
   )
 }
