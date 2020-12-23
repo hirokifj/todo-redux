@@ -15,7 +15,6 @@ const CheckIcon: FC<{ isChecked: boolean; onClick: () => void }> = ({
     vertical-align: middle;
     cursor: pointer;
     border: 1px solid #b9b8c3;
-    border-radius: 50%;
     transition: all 0.2s ease;
     transform: scale(1);
 
@@ -37,7 +36,6 @@ const CheckIcon: FC<{ isChecked: boolean; onClick: () => void }> = ({
       stroke-width: 2;
       transition: all 0.3s ease;
       transition-delay: 0.1s;
-      transform: translate3d(0, 0, 0);
     }
 
     ::before {
@@ -46,7 +44,6 @@ const CheckIcon: FC<{ isChecked: boolean; onClick: () => void }> = ({
       height: 100%;
       content: '';
       background-color: #6074f9;
-      border-radius: 50%;
       opacity: 1;
       transition-delay: 0.2s;
       transform: scale(0);
