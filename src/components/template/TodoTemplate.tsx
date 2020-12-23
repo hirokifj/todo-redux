@@ -16,7 +16,7 @@ const TodoTemplate: FC = () => {
 
   const bodyStyle = css`
     width: 100vw;
-    height: 90vh;
+    min-height: 90vh;
     background-color: #f4f4f4;
   `
 
