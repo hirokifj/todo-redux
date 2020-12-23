@@ -15,7 +15,7 @@ const TaskList: FC<{
     list-style: none;
 
     li:not(:first-of-type) {
-      margin-top: 20px;
+      margin-top: 16px;
     }
   `
 
