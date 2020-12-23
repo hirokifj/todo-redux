@@ -9,6 +9,7 @@ const TaskText: FC<{
 }> = ({ text, isChecked }) => {
   const textStyle = css`
     display: inline-block;
+    line-height: 1.4;
   `
 
   const checkedTextStyle = css`
