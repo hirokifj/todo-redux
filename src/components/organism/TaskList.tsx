@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import React, { FC } from 'react'
-import { css, jsx } from '@emotion/react'
+import { css, jsx, keyframes } from '@emotion/react'
 import { useDispatch, useSelector } from 'react-redux'
 import TaskItem from './TaskItem'
 import { Task } from '../../types/todo'
@@ -11,8 +11,22 @@ const TaskList: FC<{
   tasks: Task[]
   onCheckTask: (id: Task['id']) => void
 }> = ({ tasks, onCheckTask }) => {
+  const itemAnimation = keyframes`
+    from {
+      transform: translateY(16px);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  `
+
   const listStyle = css`
     list-style: none;
+
+    li {
+      animation: ${itemAnimation} 0.4s ease-out;
+    }
 
     li:not(:first-of-type) {
       margin-top: 16px;
