@@ -7,6 +7,9 @@ import PageTitle from '../atom/PageTitle'
 import Divider from '../atom/Divider'
 import TaskInput from '../organism/TaskInput'
 import TaskList from '../organism/TaskList'
+import { getFadeInStyle } from './templateAnimation'
+
+const fadeInStyle = getFadeInStyle(0.6)
 
 const TodoTemplate: FC = () => {
   const headerStyle = css`
@@ -43,11 +46,15 @@ const TodoTemplate: FC = () => {
       <div css={bodyStyle}>
         <div css={containerStyle}>
           <Board styleProp={boardStyle}>
-            <PageTitle>TodoList</PageTitle>
-            <div css={taskInputStyle}>
+            <div css={fadeInStyle(0)}>
+              <PageTitle>TodoList</PageTitle>
+            </div>
+            <div css={[taskInputStyle, fadeInStyle(0.1)]}>
               <TaskInput />
             </div>
-            <Divider />
+            <div css={fadeInStyle(0.2)}>
+              <Divider />
+            </div>
             <TaskList />
           </Board>
         </div>
