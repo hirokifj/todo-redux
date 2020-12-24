@@ -3,6 +3,7 @@
 import React, { FC } from 'react'
 import { css, jsx } from '@emotion/react'
 import Board from '../atom/Board'
+import PageTitle from '../atom/PageTitle'
 import Divider from '../atom/Divider'
 import TaskInput from '../organism/TaskInput'
 import TaskList from '../organism/TaskList'
@@ -32,13 +33,20 @@ const TodoTemplate: FC = () => {
     margin: 0 auto;
   `
 
+  const taskInputStyle = css`
+    margin-top: 20px;
+  `
+
   return (
     <div>
       <div css={headerStyle} />
       <div css={bodyStyle}>
         <div css={containerStyle}>
           <Board styleProp={boardStyle}>
-            <TaskInput />
+            <PageTitle>TodoList</PageTitle>
+            <div css={taskInputStyle}>
+              <TaskInput />
+            </div>
             <Divider />
             <TaskList />
           </Board>
