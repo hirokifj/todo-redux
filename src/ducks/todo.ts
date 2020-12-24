@@ -17,6 +17,12 @@ export const todoSlice = createSlice({
         isDone: false,
       })
     },
+    taskDeleted: (state, action: PayloadAction<{ id: Task['id'] }>) => {
+      const targetIndex = state.tasks.findIndex(
+        (task) => task.id === action.payload.id
+      )
+      state.tasks.splice(targetIndex, 1)
+    },
     taskStatusToggled: (state, action: PayloadAction<{ id: Task['id'] }>) => {
       const targetIndex = state.tasks.findIndex(
         (task) => task.id === action.payload.id
