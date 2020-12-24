@@ -1,13 +1,13 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import React, { FC } from 'react'
+import React, { FC, ChangeEvent, KeyboardEvent } from 'react'
 import { css, jsx } from '@emotion/react'
 
 const Input: FC<{
   value?: string
   placeholder?: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  onKeyPress?: (e: KeyboardEvent<HTMLInputElement>) => void
 }> = ({ value = '', placeholder = '', onChange, onKeyPress }) => {
   const style = css`
     width: 100%;
