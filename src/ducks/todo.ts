@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { uuid } from 'uuidv4'
+import { v4 as uuidv4 } from 'uuid'
 import { Task } from '../types/todo'
 
 export type TodoState = {
@@ -12,7 +12,7 @@ export const todoSlice = createSlice({
   reducers: {
     taskAdded: (state, action: PayloadAction<{ title: Task['title'] }>) => {
       state.tasks.push({
-        id: uuid(),
+        id: uuidv4(),
         title: action.payload.title,
         isDone: false,
       })
