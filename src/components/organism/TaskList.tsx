@@ -10,7 +10,8 @@ import { todoSlice, TodoState } from '../../ducks/todo'
 const TaskList: FC<{
   tasks: Task[]
   onCheckTask: (id: Task['id']) => void
-}> = ({ tasks, onCheckTask }) => {
+  onClickTrashIcon: (id: Task['id']) => void
+}> = ({ tasks, onCheckTask, onClickTrashIcon }) => {
   const itemAnimation = keyframes`
     from {
       transform: translateY(16px);
@@ -42,6 +43,9 @@ const TaskList: FC<{
             onCheckTask={() => {
               onCheckTask(task.id)
             }}
+            onClickTrashIcon={() => {
+              onClickTrashIcon(task.id)
+            }}
           />
         </li>
       ))}
@@ -52,13 +56,21 @@ const TaskList: FC<{
 const TaskListContainer: FC = () => {
   const tasks = useSelector<TodoState, Task[]>((state) => state.tasks)
   const dispatch = useDispatch()
-  const { taskStatusToggled } = todoSlice.actions
+  const { taskStatusToggled, taskDeleted } = todoSlice.actions
 
   const checkTask = (id: Task['id']) => {
     dispatch(taskStatusToggled({ id }))
   }
 
-  return TaskList({ tasks, onCheckTask: checkTask })
+  const removeTask = (id: Task['id']) => {
+    dispatch(taskDeleted({ id }))
+  }
+
+  return TaskList({
+    tasks,
+    onCheckTask: checkTask,
+    onClickTrashIcon: removeTask,
+  })
 }
 
 export default TaskListContainer
